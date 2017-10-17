@@ -1,4 +1,4 @@
-#' Generalised Gini
+#' Internal Generalised Gini
 #'
 #' A function that calculates the Generalised Gini coefficient
 #' from an observed Gini and a null Gini corresponding to an alternative
@@ -11,7 +11,6 @@
 #'          0 and 1 inclusive.
 #' @param Gnull a number depicting a null Gini coefficient. Accepts values
 #'          between 0 and 1 inclusive.
-#' @export
 #' @keywords Lorenz Curve, Gini, inequality
 #' @examples
 #'
