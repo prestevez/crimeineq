@@ -1,4 +1,4 @@
-#' Internal Generalised Gini
+#' Internal Generalised Gini function 
 #'
 #' A function that calculates the Generalised Gini coefficient
 #' from an observed Gini and a null Gini corresponding to an alternative
