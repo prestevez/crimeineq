@@ -6,7 +6,8 @@
 #' @return A list of \code{Gmc} class, number of replictes, type of estimate (mean or
 #'      median), the simulated distributions and their Gini coefficients.
 #' @param x a vector of counts that is to be simulated, or a mean event rate
-#'      representing the distribution to be simulated.
+#'      representing the distribution to be simulated. x can be a table or a dataframe
+#'      with a distribution, instead of the whole vector.
 #' @param n a number representing how many observations should be generated in
 #'      each replicate. Defaults to \code{NULL}, in which case the
 #'      \code{length(x)} is used.
@@ -24,6 +25,9 @@
 
 Gmc <- function(x, n = NULL, reps = 99, mean = TRUE)
 {
+    if(is.table(x) | is.data.frame(x))
+        x <- tabletovector(x)
+
     if(is.null(n)) n <- length(x)
 
     mu <- mean(x)

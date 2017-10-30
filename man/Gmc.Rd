@@ -8,7 +8,8 @@ Gmc(x, n = NULL, reps = 99, mean = TRUE)
 }
 \arguments{
 \item{x}{a vector of counts that is to be simulated, or a mean event rate
-representing the distribution to be simulated.}
+representing the distribution to be simulated. x can be a table or a dataframe
+with a distribution, instead of the whole vector.}
 
 \item{n}{a number representing how many observations should be generated in
 each replicate. Defaults to \code{NULL}, in which case the
