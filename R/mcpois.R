@@ -17,6 +17,6 @@ mcpois <- function(x, n = NULL, reps = 99, decreasing = TRUE)
     results <- list(dists = dists, reps = reps,
                     n = n, lambda = mu)
 
-    class(simdist) <- "mcpois"
-    return(simdist)
+    class(results) <- "mcpois"
+    return(results)
 }
