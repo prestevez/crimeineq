@@ -38,5 +38,5 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"), reps
 
     class(results) <- "CCR"
 
-    return(ccr)
+    return(results)
 }
