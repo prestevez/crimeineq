@@ -17,7 +17,7 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"), reps
 
     if(equality[1] == "perfect")
     {
-        if(isTRUE(cn)) warning("Perfect equality not reasonable: c < n")
+        if(isTRUE(cn)) warning("Perfect equality not reasonable: c < n\n")
         X <- (1:n)/n
     }
     if(equality[1] == "maximal" )
@@ -29,7 +29,7 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"), reps
     {
         poisdists <- mcpois(x, reps = reps)
         meandist <- mean(poisdists)
-        X <- cumprop(poisdists)
+        X <- cumprop(meandist)
     }
 
     ccrvec <- Y/X
