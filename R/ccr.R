@@ -3,7 +3,7 @@
 #'
 
 ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
-                reps = 999, mean_distribution = TRUE, xprime = NULL)
+                reps = 999, mean_distribution = TRUE)
 {
     if(is.table(x) | is.data.frame(x))
         x <- tabletovector(x)
@@ -46,8 +46,8 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
 
     if(equality[1] == "poisson")
     {
-        results <- append(results, central_measure = central_measure,
-                          poisdists = poisdists)
+        results$central_measure <- central_measure
+        results$poisdists <- poisdists
     }
 
     class(results) <- "CCR"

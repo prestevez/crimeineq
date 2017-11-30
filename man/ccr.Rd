@@ -5,7 +5,7 @@
 \title{Cumulative concentration ratio}
 \usage{
 ccr(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
-  reps = 999, mean_distribution = TRUE, xprime = NULL)
+  reps = 999, mean_distribution = TRUE)
 }
 \description{
 Cumulative concentration ratio
