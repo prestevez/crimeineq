@@ -14,6 +14,8 @@ confint.mcpois <- function(mcpois.object, conf.level = 0.95)
 
     whichdists <- sapply(criticalginis, function(x) closest(ginis, x))
 
+    print(whichdists)
+
     ci <- mcpois.object$dists[[whichdists]]
     names(ci) <- names(whichdists)
 
