@@ -4,7 +4,8 @@
 \alias{ccr}
 \title{Cumulative concentration ratio}
 \usage{
-ccr(x, n = NULL, equality = c("perfect", "maximal", "poisson"), reps = 99)
+ccr(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
+  reps = 999, mean_distribution = TRUE, xprime = NULL)
 }
 \description{
 Cumulative concentration ratio

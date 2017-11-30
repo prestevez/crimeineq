@@ -2,10 +2,10 @@
 % Please edit documentation in R/quantInv.R
 \name{quantInv}
 \alias{quantInv}
-\title{Inverse Quantile function}
+\title{quantInv primitive}
 \usage{
 quantInv(distr, value)
 }
 \description{
-Inverse Quantile function
+quantInv primitive
 }

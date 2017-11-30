@@ -8,8 +8,14 @@ confint.mcpois <- function(mcpois.object, conf.level = 0.95)
     a <- (1 - conf.level)/2
     a <- c(a, 1 - a)
 
-    mcmat <- sapply(mcpois.object$dists, unlist)
+    ginis <- sapply(dists, ineq::Gini)
 
-    ci <- t(apply(mcmat, 1, quantile, a))
+    criticalginis <- quantile(ginis, a)
+
+    whichdists <- sapply(criticalginis, function(x) closest(ginis, x))
+
+    ci <- mcpois.object$dists[[whichdists]]
+    names(ci) <- names(whichdists)
+
     return(ci)
 }

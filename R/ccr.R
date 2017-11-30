@@ -2,7 +2,8 @@
 #' @export
 #'
 
-ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"), reps = 99)
+ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
+                reps = 999, mean_distribution = TRUE, xprime = NULL)
 {
     if(is.table(x) | is.data.frame(x))
         x <- tabletovector(x)
@@ -13,28 +14,41 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"), reps
 
     cn <- c < n
 
-    Y <- cumprop(x)
-
     if(equality[1] == "perfect")
     {
         if(isTRUE(cn)) warning("Perfect equality not reasonable: c < n\n")
-        X <- (1:n)/n
+        expdist <- rep(1, n)
     }
     if(equality[1] == "maximal" )
     {
-        maxdist <- maxequality(x)
-        X <- cumprop(maxdist)
+        expdist <- maxequality(x)
     }
     if(equality[1] == "poisson")
     {
         poisdists <- mcpois(x, reps = reps)
-        meandist <- mean(poisdists)
-        X <- cumprop(meandist)
+
+        if(isTRUE(mean_distribution))
+        {
+            expdist <- mean(poisdists)
+            central_measure <- "mean"
+        }
+        else
+        {
+            expdist <- median(poisdists)
+            central_measure <- "median"
+        }
     }
 
-    ccrvec <- Y/X
+    ccrvec <- ccr_primitive(obs = x, exp = expdist)
 
-    results <- mean(ccrvec)
+    results <- list(ccr = mean(ccrvec), expdist = expdist,
+                    equality = equality[1], obs = x)
+
+    if(equality[1] == "poisson")
+    {
+        results <- append(results, central_measure = central_measure,
+                          poisdists = poisdists)
+    }
 
     class(results) <- "CCR"
 

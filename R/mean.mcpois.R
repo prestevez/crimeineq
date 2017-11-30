@@ -3,6 +3,11 @@
 
 mean.mcpois <- function(mcpois.object)
 {
-    meandist <- rowMeans(sapply(mcpois.object$dists, unlist))
+    dists <- mcpois.object$dists
+    ginis <- sapply(dists, ineq::Gini)
+    meangini <- mean(ginis)
+    whichmean <- closest(ginis, meangini)
+
+    meandist <- dists[[whichmean]]
     return(meandist)
 }
