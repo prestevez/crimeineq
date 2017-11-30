@@ -8,7 +8,7 @@ confint.mcpois <- function(mcpois.object, conf.level = 0.95)
     a <- (1 - conf.level)/2
     a <- c(a, 1 - a)
 
-    ginis <- sapply(dists, ineq::Gini)
+    ginis <- sapply(mcpois.object$dists, ineq::Gini)
 
     criticalginis <- quantile(ginis, a)
 

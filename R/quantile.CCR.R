@@ -6,8 +6,8 @@ quantile.CCR <- function(CCR.object, q = 0.5)
     obs <- CCR.object$obs
     expdist <- CCR.object$expdist
 
-    cumobs <- cumprop(obs)
-    cumexp <- cumprop(expdist)
+    cumobs <- c(0, cumprop(obs))
+    cumexp <- c(0, cumprop(expdist))
 
     vec <- q/quantile(cumexp, quantInv(cumobs, q))
     return(vec)

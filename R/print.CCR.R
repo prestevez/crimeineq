@@ -3,7 +3,7 @@
 
 print.CCR <- function(CCR.object)
 {
-    results <- "Cumulative Concentration Ratio ("
+    results <- "CCR ("
     results <- paste0(results, CCR.object$equality, " equality)\n")
 
     cat(results)
