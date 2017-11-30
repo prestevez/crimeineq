@@ -17,7 +17,6 @@ confint.mcpois <- function(mcpois.object, conf.level = 0.95)
     ci <- list(mcpois.object$dists[[whichdists[1]]])
     ci[[2]] <- mcpois.object$dists[[whichdists[2]]]
     names(ci) <- names(whichdists)
-    str(ci)
 
     return(ci)
 }
