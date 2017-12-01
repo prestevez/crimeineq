@@ -17,8 +17,12 @@ quantile.CCR <- function(CCR.object, q = 0.5)
 
     #vec <- q/quantile(cumexp, quantInv(cumobs, q))
     vec <- sapply(cumexp, function(x) q/quantile(x, quantInv(cumobs, q)))
-    result <- list(estimate = central_measure(vec), vec = vec, q = q)
 
+    est <- central_measure(vec)
+    names(est) <- names(vec)[1]
+
+    result <- list(estimate = est, vec = vec, q = q)
     class(result) <- "CCR.quant"
+
     return(result)
 }
