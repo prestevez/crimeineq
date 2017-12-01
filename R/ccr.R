@@ -10,6 +10,12 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
 
     if(is.null(n)) n <- length(x)
 
+
+    if(isTRUE(mean_distribution))
+        central_measure <- mean
+    else
+        central_measure <- median
+
     c <- sum(x)
 
     cn <- c < n
@@ -17,36 +23,31 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
     if(equality[1] == "perfect")
     {
         if(isTRUE(cn)) warning("Perfect equality not reasonable: c < n\n")
-        expdist <- rep(1, n)
+        expdist <- list(rep(1, n))
     }
     if(equality[1] == "maximal" )
     {
-        expdist <- maxequality(x)
+        expdist <- list(maxequality(x))
     }
     if(equality[1] == "poisson")
     {
         poisdists <- mcpois(x, reps = reps)
-
-        if(isTRUE(mean_distribution))
-        {
-            expdist <- mean(poisdists)
-            central_measure <- "mean"
-        }
-        else
-        {
-            expdist <- median(poisdists)
-            central_measure <- "median"
-        }
+        expdistlist <- poisdists$poisdists$dists
     }
 
-    ccrvec <- ccr_primitive(obs = x, exp = expdist)
+    #ccrvec <- ccr_primitive(obs = x, exp = expdist)
 
-    results <- list(ccr = mean(ccrvec), expdist = expdist,
+    ccrlist <- lapply(expdistlist, function(exp) ccr_primitive(obs = x, exp = exp))
+    ccrlistmeans <- sapply(ccrlist, mean)
+
+    ccr <- central_measure(ccrlistmeans)
+
+    results <- list(ccr = ccr, expdist = expdist,
                     equality = equality[1], obs = x)
 
     if(equality[1] == "poisson")
     {
-        results$central_measure <- central_measure
+        results$mean <- mean_distribution
         results$poisdists <- poisdists
     }
 

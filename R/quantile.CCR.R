@@ -10,5 +10,6 @@ quantile.CCR <- function(CCR.object, q = 0.5)
     cumexp <- c(0, cumprop(expdist))
 
     vec <- q/quantile(cumexp, quantInv(cumobs, q))
+    class(vec) <- "CCR.quant"
     return(vec)
 }
