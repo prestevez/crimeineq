@@ -10,14 +10,14 @@ confint.CCR <- function(CCR.object, conf.level = 0.95)
 
     if(CCR.object$equality != "poisson")
         stop("confint method only enabled for poisson equality CCR at the moment")
+#
+#     dists <- CCR.object$expdist
+#     obs <- CCR.object$obs
+#
+#     ccrlist <- lapply(dists, function(x) ccr_primitive(obs = obs, exp = x))
+#     ccrlistmeans <- sapply(ccrlist, mean)
 
-    dists <- CCR.object$expdist
-    obs <- CCR.object$obs
-
-    ccrlist <- lapply(dists, function(x) ccr_primitive(obs = obs, exp = x))
-    ccrlistmeans <- sapply(ccrlist, mean)
-
-    ci <- quantile(ccrlistmeans, a)
+    ci <- quantile(CCR.object$ccrlistmeans, a)
 
     return(ci)
 
