@@ -17,7 +17,7 @@ confint.CCR <- function(CCR.object, conf.level = 0.95)
 #     ccrlist <- lapply(dists, function(x) ccr_primitive(obs = obs, exp = x))
 #     ccrlistmeans <- sapply(ccrlist, mean)
 
-    ci <- quantile(CCR.object$ccrlistmeans, a)
+    ci <- quantile(CCR.object$ccrvec, a)
 
     return(ci)
 
