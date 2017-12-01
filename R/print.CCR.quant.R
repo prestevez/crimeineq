@@ -8,6 +8,6 @@ print.CCR.quant <- function(CCR.quant.object)
     msg <- paste0(msg, names(CCR.quant.object$estimate), " places)\n")
 
     cat(msg)
-    print(CCR.quant.object$estimate)
+    print(unname(CCR.quant.object$estimate))
 }
 
