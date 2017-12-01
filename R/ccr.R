@@ -43,13 +43,8 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
     ccr <- central_measure(ccrlistmeans)
 
     results <- list(ccr = ccr, expdist = expdist,
-                    equality = equality[1], obs = x, ccrvec = ccrlistmeans)
-
-    if(equality[1] == "poisson")
-    {
-        results$mean <- mean_distribution
-        #results$poisdists <- poisdists
-    }
+                    equality = equality[1], obs = x, ccrvec = ccrlistmeans,
+                    mean <- mean_distribution)
 
     class(results) <- "CCR"
 
