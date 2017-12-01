@@ -33,7 +33,7 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
     {
         poisdists <- mcpois(x, reps = reps)
         print(summary(poisdists))
-        expdist <- poisdists$poisdists$dists
+        expdist <- poisdists$dists
         print(summary(expdist))
     }
 
