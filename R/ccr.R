@@ -32,15 +32,19 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
     if(equality[1] == "poisson")
     {
         poisdists <- mcpois(x, reps = reps)
+        summary(poisdists)
         expdist <- poisdists$poisdists$dists
     }
 
     #ccrvec <- ccr_primitive(obs = x, exp = expdist)
 
     ccrlist <- lapply(expdist, function(exp) ccr_primitive(obs = x, exp = exp))
+    summary(ccrlist)
     ccrlistmeans <- sapply(ccrlist, mean)
+    summary(ccrlistmeans)
 
     ccr <- central_measure(ccrlistmeans)
+    summary(ccr)
 
     results <- list(ccr = ccr, expdist = expdist,
                     equality = equality[1], obs = x)
