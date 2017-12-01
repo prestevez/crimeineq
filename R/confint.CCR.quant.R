@@ -12,4 +12,5 @@ confint.CCR.quant <- function(CCR.quant.object, conf.level = 0.95)
         stop("confint method only enabled for poisson equality CCR at the moment")
 
     result <- quantile(CCR.quant.object$vec, a)
+    return(result)
 }
