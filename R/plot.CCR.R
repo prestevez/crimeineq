@@ -17,7 +17,16 @@ plot.CCR <- function(CCR.object)
     Xi <- cumprop(CCR.object$expdist[[indicator]])
     Xi <- c(0, Xi)
 
-    plot(x = Xi, y = Yi, type = "l", xaxs = "i", yaxs = "i",
+
+    n <- length(CCR.object$obs)
+    c <- sum(CCR.object$obs)
+
+    perfect <- list(rep(1, n))
+    cumperfect <- cumprop(perfect)
+    cumperfect <- c(0, cumperfect)
+
+
+    plot(x = cumperfect, y = Yi, type = "l", xaxs = "i", yaxs = "i",
               xlim = c(0,1), ylim = c(0,1))
-    lines(x = c(0,1), y = c(0,1), lty = 2)
+    lines(x = Xi, y = Xi, lty = 2)
 }
