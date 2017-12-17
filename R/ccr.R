@@ -44,7 +44,7 @@ ccr <- function(x, n = NULL, equality = c("perfect", "maximal", "poisson"),
 
     results <- list(ccr = ccr, expdist = expdist,
                     equality = equality[1], obs = x, ccrvec = ccrlistmeans,
-                    mean <- mean_distribution)
+                    mean = mean_distribution)
 
     class(results) <- "CCR"
 
