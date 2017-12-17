@@ -4,7 +4,7 @@
 \alias{plot.CCR}
 \title{Plot method for CCR object}
 \usage{
-\method{plot}{CCR}(CCR.object)
+\method{plot}{CCR}(CCR.object, ...)
 }
 \description{
 Plot method for CCR object
