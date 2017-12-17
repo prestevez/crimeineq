@@ -21,7 +21,7 @@ plot.CCR <- function(CCR.object)
     n <- length(CCR.object$obs)
     c <- sum(CCR.object$obs)
 
-    perfect <- list(rep(1, n))
+    perfect <- rep(1, n)
     cumperfect <- cumprop(perfect)
     cumperfect <- c(0, cumperfect)
 
