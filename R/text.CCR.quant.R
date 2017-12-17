@@ -11,7 +11,7 @@ text.CCR.quant <- function(CCR.quant.object, pos = 4, ...)
     label <- substitute(paste(Y[i], "=", q, "%"), list(q = q * 100))
     text(x = qest, y = q, label, pos = pos, ...)
 
-    label2 <- substitute(paste(Y*minutes[Y[i]], "=", qest, "%"), list(qest = qest * 100))
+    label2 <- substitute(paste(Y*minute[Y[i]], "=", qest, "%"), list(qest = round(qest * 100, 2)))
     text(x = qest, y = qest, label2, pos = pos, ...)
 
 }
