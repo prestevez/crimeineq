@@ -5,9 +5,8 @@
 lines.CCR.quant <- function(CCR.quant.object, ...)
 {
     q <- CCR.quant.object$q
-    est <- CCR.quant.object$estimate
-    qest <- q/est
+    qinv <- CCR.quant.object$qinv
 
-    lines(x = c(qest, qest), y = c(q, qest), ...)
+    lines(x = c(qinv, qinv), y = c(q, qinv), ...)
 
 }
