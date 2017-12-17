@@ -6,7 +6,6 @@ text.CCR.quant <- function(CCR.quant.object, pos1 = 4, pos2 = 4, ...)
 {
     q <- CCR.quant.object$q
     qinv <- CCR.quant.object$qinv
-
     est <- CCR.quant.object$estimate
     qest <- q/est
 
