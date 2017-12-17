@@ -17,7 +17,7 @@ plot.CCR <- function(CCR.object)
     Xi <- cumprop(CCR.object$expdist[[indicator]])
     Xi <- c(0, Xi)
 
-    p <- plot(x = Xi, y = Yi, type = "l", xaxs = "i", yaxs = "i",
+    plot(x = Xi, y = Yi, type = "l", xaxs = "i", yaxs = "i",
               xlim = c(0,1), ylim = c(0,1))
-    return(p)
+    lines(x = c(0,1), y = c(0,1), lty = 2)
 }
