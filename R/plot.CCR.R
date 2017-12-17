@@ -2,7 +2,7 @@
 #' @export
 #'
 
-plot.CCR <- function(CCR.object)
+plot.CCR <- function(CCR.object, ...)
 {
     Yi <- cumprop(CCR.object$obs)
     Yi <- c(0, Yi)
@@ -27,6 +27,6 @@ plot.CCR <- function(CCR.object)
 
 
     plot(x = cumperfect, y = Yi, type = "l", xaxs = "i", yaxs = "i",
-              xlim = c(0,1), ylim = c(0,1))
-    lines(x = Xi, y = Xi, lty = 2)
+              xlim = c(0,1), ylim = c(0,1), ...)
+    lines(x = cumperfect, y = Xi, lty = 2)
 }
