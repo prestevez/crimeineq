@@ -4,7 +4,8 @@
 \alias{text.CCR.quant}
 \title{Add text of CCR quantile}
 \usage{
-\method{text}{CCR.quant}(CCR.quant.object, pos1 = 4, pos2 = 4, ...)
+\method{text}{CCR.quant}(CCR.quant.object, pos1 = 4, pos2 = 4,
+  label1 = NULL, label2 = NULL, ...)
 }
 \description{
 Add text of CCR quantile
