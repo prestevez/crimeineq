@@ -10,5 +10,7 @@ lines.CCR.quant <- function(CCR.quant.object, ...)
     qest <- q/est
 
     lines(x = c(qinv, qinv), y = c(q, qest), ...)
+    lines(x = c(0, qinv), y = c(q, q), ...)
+    lines(x = c(0, qinv), y = c(qest, qest), ...)
 
 }
